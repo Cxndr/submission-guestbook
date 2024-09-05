@@ -4,3 +4,5 @@
  - add form validation.
  - add emojis.
  - make scrollbar on chat box custom.
+ - go through submission process (test on live).
+ 

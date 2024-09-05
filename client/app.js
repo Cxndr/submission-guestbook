@@ -128,9 +128,8 @@ function cancelUserEdit(event) {
 userEditForm.addEventListener('reset', cancelUserEdit);
 
 
-
-
 // run
 getLocalStorage();
 getChat();
 //setInterval(()=> getChat(), 500);
+

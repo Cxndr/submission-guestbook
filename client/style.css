@@ -77,6 +77,11 @@ input[type=color] {
     border-radius: 8px;
     background: none;
     cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+input[type=color]:hover {
+    transform: translate(-7%, 15%);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
 }
 input[type=color]::-webkit-color-swatch {
     border-radius: 8px;
@@ -116,7 +121,7 @@ input[type=color]::-moz-color-swatch {
 }
 .user-edit {
     visibility: hidden;
-    position: absolute;
+    position: absolute; 
     /* display: flex; */
     width: auto;
     margin: 0;
