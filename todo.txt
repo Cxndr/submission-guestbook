@@ -1,0 +1,6 @@
+ - make styling of edit user form fit on mobile.
+ - add delete message functionality.
+ - add like message functionality.
+ - add form validation.
+ - add emojis.
+ - make scrollbar on chat box custom.

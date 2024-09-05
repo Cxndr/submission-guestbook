@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playwrite+CU:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+  <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🙋</text></svg>"
+    />
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js" defer></script>
+  <title>Le Chat</title>
+</head>
+<body>
+  <header>
+    <h1>Le Chat</h1>
+  </header>
+  
+  <main>
+    <div class="user-edit-section">
+      <a id="user-edit-button" class="user-edit-button">
+        <i class="fa-solid fa-pen-to-square"></i> Edit User
+      </a>
+      <form action="" class="user-edit" id="user-edit">
+        <label for="user-edit-color">Color:</label>
+        <input type="color" class="user-edit-colour" id="user-edit-colour" name="user-edit-colour"/>
+        <label for="user-edit-name">Username:</label>
+        <input type="text" class="user-edit-name" id="user-edit-name" name="user-edit-name" size="10"/>
+        <input type="submit" id="user-edit-submit" class="user-edit-submit" name="user-edit-submit" value="Save"/>
+        <input type="reset" id="user-edit-cancel" class="user-edit-cancel" name="user-edit-cancel" value="Cancel"/>
+      </form>
+    </div>
+
+
+    <div class="chat" id="chat"></div>
+    
+    <form action="" method="post" class="chat-input" id="chat-input">
+      <input type="text" id="chat-input-text" class="chat-input-text" name="msg_content" minlength="1" maxlength="255" size="10" />
+      <input type="submit" id="chat-input-submit" class="chat-input-submit"/>
+    </form>
+
+  </main>
+
+  <footer>
+  </footer>
+</body>
+</html>

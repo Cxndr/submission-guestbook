@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    --dark-blue: #0a2463ff;
+    --light-blue: #3e92ccff;
+    --off-white: #fffaffff;
+    --red: #d8315bff;
+    --dark-red: rgb(163, 47, 76);
+    --off-black: #1e1b18ff;
+    --offer-black: rgb(34, 33, 32);
+    --green: rgb(90, 145, 131);
+}
+
+body {
+    background-color: var(--off-black);
+    color: var(--off-white);
+    margin: 0;
+    padding: 0;
+    height: 100svh;
+    display: grid;
+    grid: 3 / 1;
+    grid-template-columns: 100%;
+    grid-template-rows: 1.5fr 8fr 0.5fr;
+}
+header {
+    overflow: hidden;
+}
+header h1 {
+    font-family: 'Playwrite CU';
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+main {
+    height: 80svh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    color: var(--off-white);
+    font-weight: bold;
+    background-color: var(--light-blue);
+    padding: 0.3rem 0.5rem;
+    border: 0px solid var(--dark-blue);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+    margin-left: 0.25rem;
+}
+input[type=reset] {
+    background-color: var(--green);
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
+}
+input[type=text] {
+    border-radius: 5px;
+    border: 0px solid;
+    padding: 0.2rem;
+    font-weight: 400;
+}
+input[type=color] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(-7%, 17%);
+    border: none;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+}
+input[type=color]::-webkit-color-swatch {
+    border-radius: 8px;
+    border: none;
+}
+input[type=color]::-moz-color-swatch {
+    border-radius: 8px;
+    border: none;
+}
+
+.user-edit-section {
+    width: 80%;
+    margin: 0 auto;
+    height: 10%;
+}
+.user-edit-button {
+    visibility:visible;
+    background-color:var(--red);
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--dark-red);
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: 'Noto Sans', sans-serif;
+    color: var(--off-white);
+    border-radius: 15px;
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+    position: absolute;
+    left: 50%;
+    transition: transform 0.2s, font-size 0.2s, opacity 0.35s ease-in, filter 0.2s;
+    opacity: 1;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+.user-edit-button:hover {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.7));
+    transform: translateX(-50%) scale(1.05);
+}
+.user-edit {
+    visibility: hidden;
+    position: absolute;
+    /* display: flex; */
+    width: auto;
+    margin: 0;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%,-0%);
+    transition: opacity 0.35s ease-in;
+    opacity: 0;
+    top: 14.5%;
+}
+.user-edit input[type=text] {
+    min-width: 2rem;
+    max-width: 10rem;
+}
+
+.chat {
+    background-color: var(--offer-black);
+    padding: 0.8rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height:100%;
+    border-radius: 20px;
+    margin: 0 0.75rem;
+}
+.chat-user::after {
+    content: " ";
+}
+.chat-input {
+    margin: 0.5rem 0.75rem;
+    display: flex;
+    gap: 0.2rem;
+}
+.chat-input input[type=text] {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+}
+.chat-input input[type=submit] {
+    width: 5rem;
+    height: 100%;
+    border-radius: 10px;
+}
+
+time {
+    float: right;
+}
