@@ -35,12 +35,14 @@
       </form>
     </div>
 
-
-    <div class="chat" id="chat"></div>
+    <div class="chat-wrapper" id="chat-wrapper" data-simplebar>
+      <div class="chat" id="chat"></div>
+    </div>
+    
     
     <form action="" method="post" class="chat-input" id="chat-input">
-      <input type="text" id="chat-input-text" class="chat-input-text" name="msg_content" minlength="1" maxlength="255" size="10" />
-      <input type="submit" id="chat-input-submit" class="chat-input-submit"/>
+      <input type="text" id="chat-input-text" class="chat-input-text" name="msg_content" minlength="1" maxlength="255" size="10" required/>
+      <input type="submit" id="chat-input-submit" class="chat-input-submit" disabled/>
     </form>
 
   </main>

@@ -21,6 +21,7 @@ app.get("/msg", async (request, response) => {
 
 app.post("/msg", async (request, response) => {
     console.log("request.body: ", request.body);
+    if (request.body.username == "") { request.body.username = "anon"}
     const insertContent = await db.query(`INSERT INTO chatroom (username, msg_content, user_colour) VALUES ($1,$2,$3)`,[request.body.username, request.body.msg_content, request.body.user_colour])
     response.json(request.body);
 });

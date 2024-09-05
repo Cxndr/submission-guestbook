@@ -10,13 +10,15 @@
   },
   "type:": "module",
   "devDependencies": {
-    "vite": "^5.4.1"
+    "vite": "^5.4.3"
   },
   "main": "main.js",
   "dependencies": {
     "esbuild": "^0.21.5",
     "postcss": "^8.4.45",
-    "rollup": "^4.21.2"
+    "resize-observer-polyfill": "^1.5.1",
+    "rollup": "^4.21.2",
+    "simplebar": "^6.2.7"
   },
   "keywords": [],
   "author": "",

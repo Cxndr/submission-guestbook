@@ -1,3 +1,9 @@
+import 'simplebar';
+import 'simplebar/dist/simplebar.css';
+import ResizeObserver from 'resize-observer-polyfill';
+import SimpleBar from 'simplebar';
+window.ResizeObserver = ResizeObserver;
+
 const serverURL = "http://localhost:8080";
 
 let userName = "Anon";
@@ -22,8 +28,10 @@ function clearLocalStorage() {
 }
 
 const chatBox = document.getElementById('chat');
+const chatBoxWrapper = document.getElementById('chat-wrapper');
 const chatInput = document.getElementById('chat-input');
 const chatMsgBox = document.getElementById('chat-input-text');
+const chatSubmitButton = document.getElementById('chat-input-submit');
 
 function clearChat() {
     chatBox.innerHTML = "";
@@ -80,11 +88,25 @@ async function submitChatMsg(event) {
 
     console.log("Server response: ", responseData);
     chatMsgBox.value="";
+    chatSubmitButton.disabled = true;
     chatMsgBox.focus();
     await getChat();
-    chatBox.scrollTop = chatBox.scrollHeight;
+    const simpleBar = new SimpleBar(document.getElementById('chat-wrapper'))
+    const simplebarWrapper = simpleBar.getScrollElement();
+    simplebarWrapper.scrollTop = simplebarWrapper.scrollHeight;
 }
 chatInput.addEventListener('submit', submitChatMsg);
+
+chatMsgBox.addEventListener('input', (event) => {
+    console.log("rofiqhoihfoqih");
+    if (chatMsgBox.checkValidity()) {
+        chatSubmitButton.disabled = false;
+    }
+    else {
+        chatSubmitButton.disabled = true;
+    }
+    
+});
 
 
 const userEditForm = document.getElementById('user-edit');
@@ -100,7 +122,6 @@ function userEditDisplay() {
     }, 350);
 }
 function userEditDisplayRevert() {
-
     userEditForm.style.opacity = 0;
     userEditButton.style.visibility = "visible";
     setTimeout( () => {
