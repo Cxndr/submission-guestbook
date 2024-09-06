@@ -3,6 +3,7 @@ import 'simplebar/dist/simplebar.css';
 import ResizeObserver from 'resize-observer-polyfill';
 import SimpleBar from 'simplebar';
 window.ResizeObserver = ResizeObserver;
+let initialPageLoad = true;
 
 const serverURL = "http://localhost:8080";
 
@@ -68,6 +69,17 @@ async function getChat() {
 
         chatBox.appendChild(chatMsgDiv);
     });
+    
+    if (initialPageLoad) {
+        chatScrollToBot();
+        initialPageLoad = false;
+    }
+}
+
+function chatScrollToBot() {
+    const simpleBar = new SimpleBar(document.getElementById('chat-wrapper'))
+    const simplebarWrapper = simpleBar.getScrollElement();
+    simplebarWrapper.scrollTop = simplebarWrapper.scrollHeight;
 }
 
 async function submitChatMsg(event) {
@@ -91,9 +103,7 @@ async function submitChatMsg(event) {
     chatSubmitButton.disabled = true;
     chatMsgBox.focus();
     await getChat();
-    const simpleBar = new SimpleBar(document.getElementById('chat-wrapper'))
-    const simplebarWrapper = simpleBar.getScrollElement();
-    simplebarWrapper.scrollTop = simplebarWrapper.scrollHeight;
+    chatScrollToBot();
 }
 chatInput.addEventListener('submit', submitChatMsg);
 
