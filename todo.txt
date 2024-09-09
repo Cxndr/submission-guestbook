@@ -9,4 +9,3 @@ stretch:
 
  stretch stretch:
   - add emojis.
- * - make scrollbar on chat box custom.
