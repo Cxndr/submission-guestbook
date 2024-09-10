@@ -7,7 +7,7 @@ let initialPageLoad = true;
 
 // const hostname = "localhost:8080";
 const hostname = "lechat-server.onrender.com";
-const serverURL = `http://${hostname}`;
+const serverURL = `https://${hostname}`;
 
 let userName = "";
 let userColour = "#23BCC7";
