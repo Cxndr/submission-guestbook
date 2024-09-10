@@ -1,4 +1,4 @@
-# Cookie Clicker Week03 Project
+# Full Stack Guestbook Week04 Project
 
 ## Requirements
 
