@@ -5,8 +5,8 @@ import SimpleBar from 'simplebar';
 window.ResizeObserver = ResizeObserver;
 let initialPageLoad = true;
 
-const hostname = "localhost:8080";
-// const hostname = "lechat-server.onrender.com";
+// const hostname = "localhost:8080";
+const hostname = "lechat-server.onrender.com";
 const serverURL = `http://${hostname}`;
 
 let userName = "";
