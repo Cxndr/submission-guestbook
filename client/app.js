@@ -252,7 +252,7 @@ function cancelUserEdit(event) {
 userEditForm.addEventListener('reset', cancelUserEdit);
 
 
-const wsConn = new WebSocket(`ws://${hostname}/msg`);
+const wsConn = new WebSocket(`wss://${hostname}/msg`);
 wsConn.addEventListener('message', () => {
     console.log("incoming ws update");
     getChat();
