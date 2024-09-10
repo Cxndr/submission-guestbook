@@ -5,10 +5,11 @@ import SimpleBar from 'simplebar';
 window.ResizeObserver = ResizeObserver;
 let initialPageLoad = true;
 
-const serverURL = "http://localhost:8080";
+// const serverURL = "http://localhost:8080";
+const serverURL = "https://lechat-server.onrender.com";  
 
-let userName = "Anon";
-let userColour = "#FFFFFF";
+let userName = "";
+let userColour = "#23BCC7";
 let likedMessages = [];
 
 function getLocalStorage() {
@@ -243,5 +244,5 @@ userEditForm.addEventListener('reset', cancelUserEdit);
 // run
 getLocalStorage();
 getChat();
-//setInterval(()=> getChat(), 500);
+setInterval(()=> getChat(), 500);
 
