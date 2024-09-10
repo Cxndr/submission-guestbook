@@ -5,8 +5,9 @@ import SimpleBar from 'simplebar';
 window.ResizeObserver = ResizeObserver;
 let initialPageLoad = true;
 
-// const serverURL = "http://localhost:8080";
-const serverURL = "https://lechat-server.onrender.com";  
+const hostname = "localhost:8080";
+// const hostname = "lechat-server.onrender.com";
+const serverURL = `http://${hostname}`;
 
 let userName = "";
 let userColour = "#23BCC7";
@@ -47,6 +48,9 @@ function clearChat() {
 async function getChat() {
     const response = await fetch(serverURL + "/msg");
     const chatMessages = await response.json();
+
+    const scrolled = checkIfScrolledToBot();
+    console.log(scrolled);
 
     clearChat();
     await chatMessages.forEach( (msg) => {
@@ -100,7 +104,6 @@ async function getChat() {
 
         const chatMsgTime = document.createElement('time');
         const timestamp = new Date(msg.msg_timestamp).toLocaleString('en-GB');
-        console.log(timestamp);
         chatMsgTime.classList.add("time");
         chatMsgTime.title = timestamp;
         chatMsgTime.textContent = timestamp;
@@ -121,17 +124,26 @@ async function getChat() {
         chatBox.appendChild(chatMsgDiv);
     });
     
-    if (initialPageLoad) {
+    if (initialPageLoad || scrolled) {
         chatScrollToBot();
         initialPageLoad = false;
     }
 }
 
+const simpleBar = new SimpleBar(document.getElementById('chat-wrapper'))
+const simplebarWrapper = simpleBar.getScrollElement();
 function chatScrollToBot() {
-    const simpleBar = new SimpleBar(document.getElementById('chat-wrapper'))
-    const simplebarWrapper = simpleBar.getScrollElement();
     simplebarWrapper.scrollTop = simplebarWrapper.scrollHeight;
 };
+function checkIfScrolledToBot() {
+    console.log("scroll bot check");
+    console.log("scrolltop: ", simplebarWrapper.scrollTop);
+    console.log("scrollHeight: ", simplebarWrapper.scrollHeight);
+    if (simplebarWrapper.scrollTop > simplebarWrapper.scrollHeight-500) {
+        return true;
+    }
+    return false;
+}
 
 async function updateLikes(event, id, bool) {
     event.preventDefault();
@@ -190,7 +202,6 @@ async function submitChatMsg(event) {
 chatInput.addEventListener('submit', submitChatMsg);
 
 chatMsgBox.addEventListener('input', (event) => {
-    console.log("rofiqhoihfoqih");
     if (chatMsgBox.checkValidity()) {
         chatSubmitButton.disabled = false;
     }
@@ -241,8 +252,12 @@ function cancelUserEdit(event) {
 userEditForm.addEventListener('reset', cancelUserEdit);
 
 
+const wsConn = new WebSocket(`ws://${hostname}/msg`);
+wsConn.addEventListener('message', () => {
+    console.log("incoming ws update");
+    getChat();
+});
+
 // run
 getLocalStorage();
-getChat();
-setInterval(()=> getChat(), 500);
-
+getChat();;
